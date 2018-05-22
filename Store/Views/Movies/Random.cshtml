@@ -1,0 +1,21 @@
+﻿@model Store.Models.ViewModels.RandomMovieViewModel
+@{
+    ViewBag.Title = "Random";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Movie.Name</h2>
+@if (Model.Customers.Count == 0)
+{
+    <Text>No one has rented this movie before</Text>
+}
+else
+{
+    <ul>
+        @foreach (var customer in Model.Customers)
+        {
+            <li>@Html.ActionLink(customer.Name, "Details", "Customers", new {Id = customer.Id}, null) </li>
+        }
+    </ul>
+}
+
